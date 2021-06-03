@@ -81,7 +81,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: 0.05
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -148,6 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9217378689809488262}
   - component: {fileID: 9217378689809488263}
+  - component: {fileID: -1883780821783980410}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -185,6 +186,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   moveDirectly: {x: 0, y: 1}
+--- !u!114 &-1883780821783980410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9217378689809488281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c004f64a9bea03408d748961fb9b3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1.5
+  isDestroyGameObject: 1
 --- !u!1 &9217378690019647767
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +484,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2

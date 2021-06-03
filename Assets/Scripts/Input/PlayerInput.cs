@@ -7,11 +7,13 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Player Input")]
 public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions
 {
-    public event UnityAction<Vector2> onMove = delegate {};
-    public event UnityAction onStopMove = delegate {};
+    public event UnityAction<Vector2> onMove = delegate { };
+    public event UnityAction onStopMove = delegate { };
+    public event UnityAction onFire = delegate { };
+    public event UnityAction onStopFire = delegate { };
 
     InputActions inputActions;
-    private void OnEnable() 
+    private void OnEnable()
     {
         inputActions = new InputActions();
         inputActions.GamePlay.SetCallbacks(this);
@@ -24,7 +26,8 @@ public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-    private void OnDisable() {
+    private void OnDisable()
+    {
         DisableAllInput();
     }
 
@@ -35,13 +38,25 @@ public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
             onMove.Invoke(context.ReadValue<Vector2>());
         }
-        if(context.phase == InputActionPhase.Canceled)
+        if (context.phase == InputActionPhase.Canceled)
         {
             onStopMove.Invoke();
+        }
+    }
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            onFire.Invoke();
+        }
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            onStopFire.Invoke();
         }
     }
 

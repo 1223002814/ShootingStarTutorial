@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(MoveDirectly());
+        StartCoroutine(nameof(MoveDirectly));
     }
     IEnumerator MoveDirectly()
     {
