@@ -6,7 +6,7 @@ using UnityEngine;
 public class Pool
 {
     public GameObject Prefab { get => prefab; }
-    [SerializeField] GameObject prefab;
+    [SerializeField] private GameObject prefab;
     [SerializeField] private int poolSize = 1;
     private Queue<GameObject> queue;
     private Transform parent;
@@ -20,6 +20,10 @@ public class Pool
             queue.Enqueue(CreatePreparedObject());
         }
     }
+    /// <summary>
+    /// 创建空闲的游戏对象。
+    /// </summary>
+    /// <returns></returns>
     private GameObject CreatePreparedObject()
     {
         var preparedObject = GameObject.Instantiate(prefab, parent);
@@ -27,9 +31,11 @@ public class Pool
         return preparedObject;
     }
     /// <summary>
-    /// 从对象池中取出对象
+    /// 从对象池中取出不在使用的游戏对象。
     /// </summary>
-    /// <returns></returns>
+    /// <returns>
+    /// <para>对象池中空闲的游戏对象。</para>
+    /// </returns>
     private GameObject AvailableObject()
     {
         GameObject availableObject = null;
@@ -44,12 +50,25 @@ public class Pool
         queue.Enqueue(availableObject);
         return availableObject;
     }
+    /// <summary>
+    /// 取得已激活的可用游戏对象。
+    /// </summary>
+    /// <returns>
+    /// <para>返回已激活的可用游戏对象。</para>
+    /// </returns>
     public GameObject PreparedObject()
     {
         GameObject preparedObject = AvailableObject();
         preparedObject.SetActive(true);
         return preparedObject;
     }
+    /// <summary>
+    /// 取得已激活的可用游戏对象，并设置其<paramref name="position"></paramref>。
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns>
+    /// <para>返回已激活的可用游戏对象。</para>
+    /// </returns>
     public GameObject PreparedObject(Vector3 position)
     {
         GameObject preparedObject = AvailableObject();
@@ -57,6 +76,13 @@ public class Pool
         preparedObject.transform.position = position;
         return preparedObject;
     }
+    /// <summary>
+    /// 取得已激活的可用游戏对象，并设置其<paramref name="position"></paramref>，<paramref name="rotation"></paramref>。
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns>
+    /// <para>返回已激活的可用游戏对象。</para>
+    /// </returns>
     public GameObject PreparedObject(Vector3 position, Quaternion rotation)
     {
         GameObject preparedObject = AvailableObject();
@@ -65,6 +91,13 @@ public class Pool
         preparedObject.transform.rotation = rotation;
         return preparedObject;
     }
+    /// <summary>
+    /// 取得已激活的可用游戏对象，并设置其<paramref name="position"></paramref>，<paramref name="rotation"></paramref>，<paramref name="localScale"></paramref>。
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns>
+    /// <para>返回已激活的可用游戏对象。</para>
+    /// </returns>
     public GameObject PreparedObject(Vector3 position, Quaternion rotation, Vector3 localScale)
     {
         GameObject preparedObject = AvailableObject();

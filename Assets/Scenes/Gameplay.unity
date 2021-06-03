@@ -581,6 +581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1884970668}
+  - component: {fileID: 1884970669}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -602,6 +603,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884970669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884970667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9edf58f0844d5947923f13d146b3491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPools:
+  - prefab: {fileID: 9217378689809488281, guid: 5e8cd13b0e8c2654ba850e32fe707a71, type: 3}
+    poolSize: 20
 --- !u!1 &1902705904
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +837,7 @@ MonoBehaviour:
   moveRotationAngle: 45
   projectile: {fileID: 9217378689809488281, guid: 5e8cd13b0e8c2654ba850e32fe707a71, type: 3}
   muzzle: {fileID: 1902705905}
-  fireInterval: 1
+  fireInterval: 1.5
 --- !u!50 &2086419909
 Rigidbody2D:
   serializedVersion: 4
